@@ -10,6 +10,7 @@ public class Main {
         Universidad u2 = Universidad.getInstance();
         //Universidad u3 = new Universidad();
 
+        // Factory Method
         AplicacionOfimatica a = new Powerpoint();
         Documento d = a.crear();
         d.save();
