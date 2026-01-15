@@ -1,3 +1,6 @@
+import patrones.adapter.Adaptador;
+import patrones.adapter.AdaptadorLibreriaAudio;
+import patrones.adapter.AdaptadorOtraLibreriaAudio;
 import patrones.adapter.LibreriaAudio;
 import patrones.factory_method.AplicacionOfimatica;
 import patrones.factory_method.Documento;
@@ -17,10 +20,17 @@ public class Main {
         d.save();
 
         // Adapter
-        var libreriaAudio = new LibreriaAudio();
-        libreriaAudio.start();
-        libreriaAudio.pause();
-        libreriaAudio.stop();
+        iniciarMusica(new AdaptadorOtraLibreriaAudio());
 
+    }
+
+    public static void iniciarMusica(Adaptador adaptador) {
+        adaptador.start();
+
+        adaptador.pause();
+
+        adaptador.start();
+
+        adaptador.stop();
     }
 }
