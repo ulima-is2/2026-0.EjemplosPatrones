@@ -1,3 +1,4 @@
+import patrones.adapter.LibreriaAudio;
 import patrones.factory_method.AplicacionOfimatica;
 import patrones.factory_method.Documento;
 import patrones.factory_method.Excel;
@@ -14,5 +15,12 @@ public class Main {
         AplicacionOfimatica a = new Powerpoint();
         Documento d = a.crear();
         d.save();
+
+        // Adapter
+        var libreriaAudio = new LibreriaAudio();
+        libreriaAudio.start();
+        libreriaAudio.pause();
+        libreriaAudio.stop();
+
     }
 }
