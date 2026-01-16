@@ -5,6 +5,10 @@ import patrones.adapter.Adaptador;
 import patrones.adapter.AdaptadorLibreriaAudio;
 import patrones.adapter.AdaptadorOtraLibreriaAudio;
 import patrones.adapter.LibreriaAudio;
+import patrones.decorator.Cafe;
+import patrones.decorator.CafeAmericano;
+import patrones.decorator.ChocolateDecorator;
+import patrones.decorator.LecheDecorator;
 import patrones.fachada.Descuento;
 import patrones.fachada.Inventario;
 import patrones.fachada.ManagerProductos;
@@ -31,9 +35,18 @@ public class Main {
         iniciarMusica(new AdaptadorOtraLibreriaAudio());
 
         // Fachada y Singleton
-        ManagerProductos manager = ManagerProductos.getInstance();
-        manager.comprar("Peluche Ulises");
+        //ManagerProductos manager = ManagerProductos.getInstance();
+        //manager.comprar("Peluche Ulises");
 
+        // Decorator
+        Cafe cafe = new CafeAmericano();
+        System.out.println("Cafe Americano: " + cafe.getCosto());
+
+        System.out.println("Cafe Americano con Leche: " + new LecheDecorator(cafe).getCosto());
+        System.out.println("Cafe Americano con Chocolate: " + new ChocolateDecorator(cafe).getCosto());
+
+        float costaMoccachino = new LecheDecorator(new ChocolateDecorator(cafe)).getCosto();
+        System.out.println("Costo Moccachino: " + costaMoccachino);
 
     }
 
