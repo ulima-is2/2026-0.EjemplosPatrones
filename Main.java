@@ -5,6 +5,10 @@ import patrones.adapter.Adaptador;
 import patrones.adapter.AdaptadorLibreriaAudio;
 import patrones.adapter.AdaptadorOtraLibreriaAudio;
 import patrones.adapter.LibreriaAudio;
+import patrones.bridge.ColorRojo;
+import patrones.bridge.ColorVerde;
+import patrones.bridge.FormaCirculo;
+import patrones.bridge.FormaCuadrado;
 import patrones.decorator.Cafe;
 import patrones.decorator.CafeAmericano;
 import patrones.decorator.ChocolateDecorator;
@@ -47,6 +51,14 @@ public class Main {
 
         float costaMoccachino = new LecheDecorator(new ChocolateDecorator(cafe)).getCosto();
         System.out.println("Costo Moccachino: " + costaMoccachino);
+
+
+        //Bridge
+        var formaCirculoRojo = new FormaCirculo(30, 20, new ColorRojo());
+        var formaCuadradoVerde = new FormaCuadrado(20, 20, new ColorVerde());
+
+        formaCirculoRojo.render();
+        formaCuadradoVerde.render();
 
     }
 
