@@ -1,0 +1,31 @@
+@startuml observer
+class GameState {
+    -puntaje : int
+    -vidas : int
+    -nivel : int
+    -observadores : List<GameStateObserver>
+
+    +addObserver(o : GameStateObserver)
+}
+
+class GameStateObserver {
+    +notify()
+}
+
+class HUD {
+    +notify()
+}
+
+class SistemaLogros{
+    +notify()
+}
+
+class SistemaLogs {
+    +notify()
+}
+
+GameStateObserver <|-- HUD
+GameStateObserver <|-- SistemaLogros
+GameStateObserver <|-- SistemaLogs
+GameState --> GameStateObserver
+@enduml

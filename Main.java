@@ -22,6 +22,9 @@ import patrones.factory_method.AplicacionOfimatica;
 import patrones.factory_method.Documento;
 import patrones.factory_method.Excel;
 import patrones.factory_method.Powerpoint;
+import patrones.observer.GameState;
+import patrones.observer.HUD;
+import patrones.observer.SistemaLogros;
 
 public class Main {
     public static void main(String[] args) {
@@ -59,6 +62,14 @@ public class Main {
 
         formaCirculoRojo.render();
         formaCuadradoVerde.render();
+
+        // Observer
+        
+        GameState.getInstance().addObserver(new HUD());
+        GameState.getInstance().addObserver(new SistemaLogros());
+
+        GameState.getInstance().setNivel(9);
+        GameState.getInstance().setPuntaje(11);
 
     }
 
